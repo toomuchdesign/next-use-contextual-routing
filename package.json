@@ -1,0 +1,72 @@
+{
+  "name": "next-use-contextual-routing",
+  "description": "Generate Next.js contextual routing paths",
+  "version": "0.0.0",
+  "main": "src/index.js",
+  "files": [
+    "src",
+    "!__tests__"
+  ],
+  "scripts": {
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "preversion": "npm run prepublish",
+    "version": "git add package.json",
+    "postversion": "git push && git push --tags",
+    "prepare": "npm t",
+    "format": "prettier --write \"**/*.{js,json,md}\""
+  },
+  "keywords": [
+    "next",
+    "next.js",
+    "contextual",
+    "routing",
+    "snowlift",
+    "route as modal",
+    "hook"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toomuchdesign/next-use-contextual-routing.git"
+  },
+  "author": "Andrea Carraro <me@andreacarraro.it>",
+  "license": "ISC",
+  "dependencies": {
+    "query-string": "^6.13.2"
+  },
+  "devDependencies": {
+    "@testing-library/react-hooks": "^3.4.1",
+    "coveralls": "^3.1.0",
+    "husky": "^4.0.0",
+    "jest": "^26.4.2",
+    "lint-staged": "^10.0.0",
+    "next": "^9.5.3",
+    "prettier": "^2.0.0",
+    "react": "^16.13.1",
+    "react-test-renderer": "^16.13.1"
+  },
+  "peerDependencies": {
+    "next": "^9.0.0",
+    "react": "^16.8.0"
+  },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "__tests__"
+    ],
+    "coverageReporters": [
+      "text",
+      "lcov"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,json,md}": [
+      "prettier",
+      "npm t -- ."
+    ]
+  }
+}
