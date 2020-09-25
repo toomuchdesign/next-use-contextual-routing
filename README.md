@@ -69,10 +69,20 @@ function MyPage() {
 
 ## Notes
 
+### Naming
+
 **Contextual routing** pattern is also known as:
 
 - [Route as modal][next-docs-contextual-routing]
 - [Snowlift][twitter-pattern-name]
+
+### Scroll behaviour on refresh
+
+When using **Contextual routing**, default browsers scroll behaviour on page refresh might produce undesired results. If the case, setting [`history.scrollRestoration`][history-scroll-restoration-docs] to `manual` could improve user experience.
+
+```js
+history.scrollRestoration = 'manual';
+```
 
 [ci]: https://travis-ci.com/toomuchdesign/next-use-contextual-routing
 [ci-badge]: https://travis-ci.com/toomuchdesign/next-use-contextual-routing.svg?branch=master
@@ -82,3 +92,4 @@ function MyPage() {
 [coveralls]: https://coveralls.io/github/toomuchdesign/next-use-contextual-routing?branch=master
 [next-docs-contextual-routing]: https://github.com/vercel/next.js/tree/v9.5.3/examples/with-route-as-modal
 [twitter-pattern-name]: https://twitter.com/swyx/status/1245891685927682049
+[history-scroll-restoration-docs]: https://developer.mozilla.org/en-US/docs/Web/API/History/scrollRestoration
