@@ -53,6 +53,17 @@ describe('useContextualRouting', () => {
     expect(result.current.contextualHref).toBe('/startpage/[id]?id=55&page=2');
   });
 
+  it('returns expected hrefs when query object is empty', () => {
+    const router = {
+      asPath: '/startpage',
+      pathname: '/startpage',
+      query: {},
+    };
+    const { result } = renderHook({ router });
+    expect(result.current.returnHref).toBe('/startpage');
+    expect(result.current.contextualHref).toBe('/startpage');
+  });
+
   describe('Route change: contextual routing started', () => {
     it('preserves hrefs pointing to the page where contextual routing started from', () => {
       const router = { ...initialRouter };
