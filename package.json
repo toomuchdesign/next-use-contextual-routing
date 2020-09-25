@@ -2,20 +2,24 @@
   "name": "next-use-contextual-routing",
   "description": "Generate Next.js contextual routing paths",
   "version": "0.0.0",
-  "main": "src/index.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
   "types": "src/index.d.ts",
   "files": [
     "src",
     "!__tests__"
   ],
   "scripts": {
-    "test": "jest",
-    "test:source": "jest --coverage",
-    "test:typescript": "tsd",
+    "clean": "rm -rf dist",
+    "compile": "npm run clean && rollup -c",
     "preversion": "npm run prepare",
     "version": "git add package.json",
     "postversion": "git push && git push --tags",
-    "prepare": "npm run test:typescript && npm run test:source",
+    "prepare": "npm run test:source && npm run compile && npm run test:bundles",
+    "test": "jest",
+    "test:source": "npm run test:source:ts && npm t -- --coverage",
+    "test:source:ts": "tsd",
+    "test:bundles": "es-check es5 --module './@(dist)/*.js'",
     "format": "prettier --write \"**/*.{js,json,md}\""
   },
   "keywords": [
@@ -37,8 +41,11 @@
     "query-string": "^6.13.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@rollup/plugin-babel": "^5.2.1",
     "@testing-library/react-hooks": "^3.4.1",
     "coveralls": "^3.1.0",
+    "es-check": "^5.1.1",
     "husky": "^4.0.0",
     "jest": "^26.4.2",
     "lint-staged": "^10.0.0",
@@ -46,6 +53,7 @@
     "prettier": "^2.0.0",
     "react": "^16.13.1",
     "react-test-renderer": "^16.13.1",
+    "rollup": "^2.28.2",
     "tsd": "^0.13.1"
   },
   "peerDependencies": {
@@ -65,8 +73,8 @@
     ]
   },
   "tsd": {
-		"directory": "src/__tests__"
-	},
+    "directory": "src/__tests__"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
