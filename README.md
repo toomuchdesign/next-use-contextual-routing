@@ -4,7 +4,7 @@
 [![Test coverage report][coveralls-badge]][coveralls]
 [![Npm version][npm-badge]][npm]
 
-React hook that generates round trip hrefs for Next.js [contextual routing][next-docs-contextual-routing].
+React hook that generates round trip hrefs for Next.js [contextual routing][next-docs-contextual-routing]. TS types included.
 
 ### With Next links
 
