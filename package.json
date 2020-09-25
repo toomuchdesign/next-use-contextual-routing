@@ -3,17 +3,19 @@
   "description": "Generate Next.js contextual routing paths",
   "version": "0.0.0",
   "main": "src/index.js",
+  "types": "src/index.d.ts",
   "files": [
     "src",
     "!__tests__"
   ],
   "scripts": {
     "test": "jest",
-    "test:coverage": "jest --coverage",
-    "preversion": "npm run prepublish",
+    "test:source": "jest --coverage",
+    "test:typescript": "tsd",
+    "preversion": "npm run prepare",
     "version": "git add package.json",
     "postversion": "git push && git push --tags",
-    "prepare": "npm t",
+    "prepare": "npm run test:typescript && npm run test:source",
     "format": "prettier --write \"**/*.{js,json,md}\""
   },
   "keywords": [
@@ -43,13 +45,17 @@
     "next": "^9.5.3",
     "prettier": "^2.0.0",
     "react": "^16.13.1",
-    "react-test-renderer": "^16.13.1"
+    "react-test-renderer": "^16.13.1",
+    "tsd": "^0.13.1"
   },
   "peerDependencies": {
     "next": "^9.0.0",
     "react": "^16.8.0"
   },
   "jest": {
+    "testPathIgnorePatterns": [
+      ".test-d\\.ts"
+    ],
     "coveragePathIgnorePatterns": [
       "__tests__"
     ],
@@ -58,13 +64,16 @@
       "lcov"
     ]
   },
+  "tsd": {
+		"directory": "src/__tests__"
+	},
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
-    "**/*.{js,json,md}": [
+    "**/*.{js,json,ts,md}": [
       "prettier",
       "npm t -- ."
     ]
