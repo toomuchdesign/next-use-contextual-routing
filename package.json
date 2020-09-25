@@ -6,6 +6,7 @@
   "module": "dist/index.esm.js",
   "types": "src/index.d.ts",
   "files": [
+    "dist",
     "src",
     "!__tests__"
   ],
