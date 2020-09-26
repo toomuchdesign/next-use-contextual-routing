@@ -75,6 +75,7 @@ function MyPage() {
 
 - [Route as modal][next-docs-contextual-routing]
 - [Snowlift][twitter-pattern-name]
+- Instagram style modal routing
 
 ### Scroll behaviour on refresh
 
