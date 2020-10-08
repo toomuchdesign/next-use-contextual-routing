@@ -1,8 +1,10 @@
-import { expectType } from 'tsd';
+import { expectType, expectAssignable, expectError } from 'tsd';
 import { useContextualRouting } from '../';
 
-type expected = {
-  returnHref: string;
-  contextualHref: string;
-};
-expectType<expected>(useContextualRouting());
+const { returnHref, makeContextualHref } = useContextualRouting();
+
+expectType<string>(returnHref);
+expectAssignable<Function>(makeContextualHref);
+
+expectError(makeContextualHref('s'));
+expectType<string>(makeContextualHref({ foo: 'bar' }));

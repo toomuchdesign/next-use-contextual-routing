@@ -1,7 +1,8 @@
 import React from 'react';
 import { RouterContext } from 'next/dist/next-server/lib/router-context';
 import { renderHook as TLRenderHook } from '@testing-library/react-hooks';
-import { useContextualRouting } from '../index';
+import { stringify } from 'query-string';
+import { useContextualRouting, RETURN_HREF_QUERY_PARAM } from '../index';
 
 const mockRouter = {
   basePath: '',
@@ -47,43 +48,62 @@ describe('useContextualRouting', () => {
     },
   };
 
-  it('returns hrefs relative to the page where contextual routing starts from', () => {
+  it('returns hrefs relative to the route where contextual routing starts from', () => {
     const { result } = renderHook({ router: initialRouter });
     expect(result.current.returnHref).toBe('/startpage/55?page=2#anchor');
-    expect(result.current.contextualHref).toBe('/startpage/[id]?id=55&page=2');
+    expect(result.current.makeContextualHref({ extraParam: 'foo' })).toBe(
+      '/startpage/[id]?' +
+        stringify({
+          id: 55,
+          page: 2,
+          extraParam: 'foo',
+          [RETURN_HREF_QUERY_PARAM]: '/startpage/55?page=2#anchor',
+        })
+    );
   });
 
   it('returns expected hrefs when query object is empty', () => {
     const router = {
+      ...initialRouter,
       asPath: '/startpage',
-      pathname: '/startpage',
       query: {},
     };
     const { result } = renderHook({ router });
     expect(result.current.returnHref).toBe('/startpage');
-    expect(result.current.contextualHref).toBe('/startpage');
+    expect(result.current.makeContextualHref()).toBe(
+      '/startpage/[id]?' +
+        stringify({
+          [RETURN_HREF_QUERY_PARAM]: '/startpage',
+        })
+    );
   });
 
-  describe('Route change: contextual routing started', () => {
+  describe('Contextual routing starts', () => {
     it('preserves hrefs pointing to the page where contextual routing started from', () => {
       const router = { ...initialRouter };
       const { result, rerender } = renderHook({ router });
 
-      // Route change 1; contextual routing started
+      // Simulate route change happening when contextual routing starts
       // @NOTE It seems that rerender accepts only newProp (new initial props) so here we mutate the original router object :(
       // https://github.com/testing-library/react-hooks-testing-library/issues/228
       router.asPath = '/post/5';
+      router.query[RETURN_HREF_QUERY_PARAM] = result.current.returnHref;
       rerender();
 
       expect(result.current.returnHref).toBe('/startpage/55?page=2#anchor');
-      expect(result.current.contextualHref).toBe(
-        '/startpage/[id]?id=55&page=2'
+      expect(result.current.makeContextualHref()).toBe(
+        '/startpage/[id]?' +
+          stringify({
+            id: 55,
+            page: 2,
+            [RETURN_HREF_QUERY_PARAM]: '/startpage/55?page=2#anchor',
+          })
       );
     });
   });
 
-  describe('Route change: start page query changes', () => {
-    it('updates href to reflect query updates', () => {
+  describe('Route change before contextual routing has started', () => {
+    it('updates returned values to reflect query updates', () => {
       const router = { ...initialRouter };
       const { result, rerender } = renderHook({ router });
 
@@ -98,8 +118,13 @@ describe('useContextualRouting', () => {
       rerender();
 
       expect(result.current.returnHref).toBe('/startpage/55?page=3#anchor');
-      expect(result.current.contextualHref).toBe(
-        '/startpage/[id]?id=55&page=3'
+      expect(result.current.makeContextualHref()).toBe(
+        '/startpage/[id]?' +
+          stringify({
+            id: 55,
+            page: 3,
+            [RETURN_HREF_QUERY_PARAM]: '/startpage/55?page=3#anchor',
+          })
       );
     });
   });
