@@ -23,7 +23,8 @@
     "test:bundles": "es-check es5 --module './@(dist)/*.js'",
     "format": "prettier --write \"**/*.{js,json,md}\"",
     "demo:start": "cd ./demo && next",
-    "demo:compile": "cd ./demo && next build && cd ./demo && next export"
+    "demo:compile": "cd ./demo && next build && next export",
+    "demo:deploy": "npm run demo:compile && touch demo/out/.nojekyll && gh-pages -d demo/out --dotfiles"
   },
   "keywords": [
     "next",
@@ -51,6 +52,7 @@
     "@testing-library/react-hooks": "^3.4.1",
     "coveralls": "^3.1.0",
     "es-check": "^5.1.1",
+    "gh-pages": "^3.1.0",
     "husky": "^4.0.0",
     "jest": "^26.4.2",
     "lint-staged": "^10.0.0",
