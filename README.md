@@ -14,12 +14,16 @@ import Link from 'next/link';
 import { useContextualRouting } from 'next-use-contextual-routing';
 
 function MyPage() {
-  const { returnHref, contextualHref } = useContextualRouting();
+  const { makeContextualHref, returnHref } = useContextualRouting();
 
   return (
     <ul>
       <li>
-        <Link href={contextualHref} as="/route-to-visit-contextually" shallow>
+        <Link
+          href={makeContextualHref({ id: 33 })}
+          as="/route-to-visit-contextually"
+          shallow
+        >
           Start contextual routing
         </Link>
       </li>
@@ -36,23 +40,25 @@ function MyPage() {
 ### With Next router
 
 ```js
-import React, { useCallback } from 'react';
+import React from 'react';
 import { useRouter } from 'next/link';
 import { useContextualRouting } from 'next-use-contextual-routing';
 
 function MyPage() {
   const router = useRouter();
-  const { returnHref, contextualHref } = useContextualRouting();
+  const { makeContextualHref, returnHref } = useContextualRouting();
 
-  const openModal = useCallback(() => {
-    router.push(contextualHref, '/route-to-visit-contextually', {
-      shallow: true,
-    });
-  }, [router, contextualHref]);
+  const openModal = () =>
+    router.push(
+      makeContextualHref({ id: 33 }),
+      '/route-to-visit-contextually',
+      {
+        shallow: true,
+      }
+    );
 
-  const closeModal = useCallback(() => {
+  const closeModal = () =>
     router.push(returnHref, undefined, { shallow: true });
-  }, [router, returnHref]);
 
   return (
     <ul>
@@ -66,6 +72,39 @@ function MyPage() {
   );
 }
 ```
+
+## Why?
+
+Contextual routing presents 2 challenges:
+
+- Persist a href string able to keep the initial page state consistent throughout the whole contextual navigation
+- Persist the url to return to when contextual routing is terminated
+
+**Next use contextual routing** abstracts these responsibilities in the form of a React hook.
+
+## API
+
+```js
+const { makeContextualHref, returnHref } = useContextualRouting();
+```
+
+#### makeContextualHref
+
+```js
+const makeContextualHref: (extraQueryParams: { [key: string]: any }) => string;
+```
+
+The function returns the path to provide as `href` to start or keep alive contextual navigation. The generated path describes the state of the page to keep alive while contextual navigation is active.
+
+It optionally accepts an object describing **extra parameters** to append to contextual navigation `href`.
+
+#### returnHref
+
+```js
+const returnHref: string;
+```
+
+The path to return to to close contextual navigation.
 
 ## Notes
 

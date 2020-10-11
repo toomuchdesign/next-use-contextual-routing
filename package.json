@@ -43,6 +43,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
+    "@babel/plugin-transform-react-jsx": "^7.10.4",
+    "@babel/preset-env": "^7.11.5",
     "@rollup/plugin-babel": "^5.2.1",
     "@testing-library/react-hooks": "^3.4.1",
     "coveralls": "^3.1.0",

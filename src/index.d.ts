@@ -1,4 +1,6 @@
 export function useContextualRouting(): {
   returnHref: string;
-  contextualHref: string;
+  makeContextualHref: (extraQueryParams: { [key: string]: any }) => string;
 };
+
+
