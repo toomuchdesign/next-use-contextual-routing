@@ -15,9 +15,7 @@ export const RETURN_HREF_QUERY_PARAM = '_UCR_return_href';
 export function useContextualRouting() {
   const router = useRouter();
   const returnHrefQueryParam = router.query[RETURN_HREF_QUERY_PARAM];
-  const watchedQuery = {
-    ...router.query,
-  };
+  const watchedQuery = Object.assign({}, router.query);
   delete watchedQuery[RETURN_HREF_QUERY_PARAM];
 
   /*
@@ -32,11 +30,11 @@ export function useContextualRouting() {
     (extraParams) =>
       router.pathname +
       '?' +
-      stringify({
-        ...router.query,
-        ...extraParams,
-        [RETURN_HREF_QUERY_PARAM]: returnHref,
-      }),
+      stringify(
+        Object.assign({}, router.query, extraParams, {
+          [RETURN_HREF_QUERY_PARAM]: returnHref,
+        })
+      ),
     [queryHash, returnHref]
   );
 
