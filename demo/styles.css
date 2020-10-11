@@ -1,0 +1,17 @@
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+h2 {
+  margin: 0;
+  padding: 10px 0;
+}
+
+#__next {
+  height: 100%;
+}
