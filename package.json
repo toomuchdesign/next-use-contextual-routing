@@ -39,7 +39,7 @@
   "author": "Andrea Carraro <me@andreacarraro.it>",
   "license": "ISC",
   "dependencies": {
-    "query-string": "^6.13.2"
+    "qs-stringify": "^1.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",

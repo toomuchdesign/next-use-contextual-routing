@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { useRouter } from 'next/router';
-import { stringify } from 'query-string';
+import stringify from 'qs-stringify';
 export const RETURN_HREF_QUERY_PARAM = '_UCR_return_href';
 
 /**
