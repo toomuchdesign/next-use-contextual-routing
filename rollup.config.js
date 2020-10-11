@@ -17,6 +17,6 @@ export default [
       { file: pkg.main, format: 'cjs' },
       { file: pkg.module, format: 'es' },
     ],
-    plugins: [babel({ babelHelpers: 'runtime' })],
+    plugins: [babel({ babelHelpers: 'bundled' })],
   },
 ];

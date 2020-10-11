@@ -14,10 +14,11 @@ export const RETURN_HREF_QUERY_PARAM = '_UCR_return_href';
  */
 export function useContextualRouting() {
   const router = useRouter();
-  const {
-    [RETURN_HREF_QUERY_PARAM]: returnHrefQueryParam,
-    ...watchedQuery
-  } = router.query;
+  const returnHrefQueryParam = router.query[RETURN_HREF_QUERY_PARAM];
+  const watchedQuery = {
+    ...router.query,
+  };
+  delete watchedQuery[RETURN_HREF_QUERY_PARAM];
 
   /*
    * After a page refresh there is no RETURN_HREF_QUERY_PARAM in router.query
