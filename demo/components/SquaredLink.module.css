@@ -1,0 +1,13 @@
+.postCard {
+  background-color: lightblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: black solid 1px;
+}
+
+.postCard:after {
+  content: '';
+  display: block;
+  padding-bottom: 100%;
+}
