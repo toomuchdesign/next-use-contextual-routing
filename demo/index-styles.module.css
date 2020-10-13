@@ -1,0 +1,10 @@
+.background {
+  height: 100%;
+  transition: background ease 0.3s;
+}
+
+.content {
+  margin: 0 auto;
+  padding: 10px;
+  max-width: 600px;
+}

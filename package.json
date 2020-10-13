@@ -21,7 +21,10 @@
     "test:source": "npm run test:source:ts && npm t -- --coverage",
     "test:source:ts": "tsd",
     "test:bundles": "es-check es5 --module './@(dist)/*.js'",
-    "format": "prettier --write \"**/*.{js,json,md}\""
+    "format": "prettier --write \"**/*.{js,json,md}\"",
+    "demo:start": "cd ./demo && next",
+    "demo:compile": "cd ./demo && next build && next export",
+    "demo:deploy": "npm run demo:compile && touch demo/out/.nojekyll && gh-pages -d demo/out --dotfiles"
   },
   "keywords": [
     "next",
@@ -39,7 +42,7 @@
   "author": "Andrea Carraro <me@andreacarraro.it>",
   "license": "ISC",
   "dependencies": {
-    "query-string": "^6.13.2"
+    "qs-stringify": "^1.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
@@ -49,12 +52,16 @@
     "@testing-library/react-hooks": "^3.4.1",
     "coveralls": "^3.1.0",
     "es-check": "^5.1.1",
+    "gh-pages": "^3.1.0",
     "husky": "^4.0.0",
     "jest": "^26.4.2",
     "lint-staged": "^10.0.0",
     "next": "^9.5.3",
+    "next-transpile-modules": "^4.1.0",
     "prettier": "^2.0.0",
     "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-modal": "^3.11.2",
     "react-test-renderer": "^16.13.1",
     "rollup": "^2.28.2",
     "tsd": "^0.13.1"

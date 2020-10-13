@@ -1,0 +1,18 @@
+.wrapper {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+  justify-content: center;
+}
+
+.grid__small {
+  grid-template-columns: repeat(auto-fit, 33px);
+  grid-auto-rows: 33px;
+}

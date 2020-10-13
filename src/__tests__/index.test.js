@@ -1,7 +1,7 @@
 import React from 'react';
 import { RouterContext } from 'next/dist/next-server/lib/router-context';
 import { renderHook as TLRenderHook } from '@testing-library/react-hooks';
-import { stringify } from 'query-string';
+import stringify from 'qs-stringify';
 import { useContextualRouting, RETURN_HREF_QUERY_PARAM } from '../index';
 
 const mockRouter = {

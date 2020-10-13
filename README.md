@@ -4,7 +4,9 @@
 [![Test coverage report][coveralls-badge]][coveralls]
 [![Npm version][npm-badge]][npm]
 
-React hook that generates round trip hrefs for Next.js [contextual routing][next-docs-contextual-routing]. TS types included.
+React hook that generates round trip hrefs to enable [contextual routing][next-docs-contextual-routing] for [Next.js][next]. Take a look to the [demo 👈][demo].
+
+[![Contextual routing in action](https://j.gifs.com/jZ37mz.gif)](https://www.youtube.com/watch?v=4NR2uOBsIu4)
 
 ### With Next links
 
@@ -80,17 +82,19 @@ Contextual routing presents 2 challenges:
 - Persist a href string able to keep the initial page state consistent throughout the whole contextual navigation
 - Persist the url to return to when contextual routing is terminated
 
-**Next use contextual routing** abstracts these responsibilities in the form of a React hook.
+**Next use contextual routing** abstracts these responsibilities as a React hook.
+
+It also works in statically exported apps and supports navigation with browsers' back button.
 
 ## API
 
-```js
+```ts
 const { makeContextualHref, returnHref } = useContextualRouting();
 ```
 
 #### makeContextualHref
 
-```js
+```ts
 const makeContextualHref: (extraQueryParams: { [key: string]: any }) => string;
 ```
 
@@ -100,7 +104,7 @@ It optionally accepts an object describing **extra parameters** to append to con
 
 #### returnHref
 
-```js
+```ts
 const returnHref: string;
 ```
 
@@ -130,6 +134,8 @@ history.scrollRestoration = 'manual';
 [npm-badge]: https://img.shields.io/npm/v/next-use-contextual-routing.svg
 [coveralls-badge]: https://coveralls.io/repos/github/toomuchdesign/next-use-contextual-routing/badge.svg?branch=master
 [coveralls]: https://coveralls.io/github/toomuchdesign/next-use-contextual-routing?branch=master
+[next]: https://nextjs.org/
 [next-docs-contextual-routing]: https://github.com/vercel/next.js/tree/v9.5.3/examples/with-route-as-modal
 [twitter-pattern-name]: https://twitter.com/swyx/status/1245891685927682049
 [history-scroll-restoration-docs]: https://developer.mozilla.org/en-US/docs/Web/API/History/scrollRestoration
+[demo]: https://toomuchdesign.github.io/next-use-contextual-routing/

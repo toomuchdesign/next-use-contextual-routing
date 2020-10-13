@@ -5,9 +5,9 @@
 node_modules
 coverage/
 dist/
+demo/out
 
 # Trailing dotted files
-!.all-contributorsrc
 !.babelrc*
 !.editorconfig
 !.gitignore
