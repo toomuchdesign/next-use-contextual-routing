@@ -3,6 +3,7 @@
 [![Build status][ci-badge]][ci]
 [![Test coverage report][coveralls-badge]][coveralls]
 [![Npm version][npm-badge]][npm]
+[![Bundle size][bundlephobia-badge]][bundlephobia]
 
 React hook that generates round trip hrefs to enable [contextual routing][next-docs-contextual-routing] for [Next.js][next]. Take a look to the [demo 👈][demo].
 
@@ -116,6 +117,7 @@ The path to return to to close contextual navigation.
 
 **Contextual routing** pattern is also known as:
 
+- Modal route
 - [Route as modal][next-docs-contextual-routing]
 - [Snowlift][twitter-pattern-name]
 - Instagram style modal routing
@@ -139,3 +141,5 @@ history.scrollRestoration = 'manual';
 [twitter-pattern-name]: https://twitter.com/swyx/status/1245891685927682049
 [history-scroll-restoration-docs]: https://developer.mozilla.org/en-US/docs/Web/API/History/scrollRestoration
 [demo]: https://toomuchdesign.github.io/next-use-contextual-routing/
+[bundlephobia-badge]: https://badgen.net/bundlephobia/minzip/next-use-contextual-routing
+[bundlephobia]: https://bundlephobia.com/result?p=next-use-contextual-routing

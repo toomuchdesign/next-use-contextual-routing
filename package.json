@@ -33,6 +33,7 @@
     "routing",
     "snowlift",
     "route as modal",
+    "modal route",
     "hook"
   ],
   "repository": {
