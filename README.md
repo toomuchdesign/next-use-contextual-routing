@@ -69,7 +69,7 @@ function MyPage() {
         <button onClick={openModal}>Open contextual modal</button>
       </li>
       <li>
-        <button onClick={closeHandler}>Close contextual modal</button>
+        <button onClick={closeModal}>Close contextual modal</button>
       </li>
     </ul>
   );
