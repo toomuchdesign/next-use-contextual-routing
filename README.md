@@ -44,7 +44,7 @@ function MyPage() {
 
 ```js
 import React from 'react';
-import { useRouter } from 'next/link';
+import { useRouter } from 'next/router';
 import { useContextualRouting } from 'next-use-contextual-routing';
 
 function MyPage() {
