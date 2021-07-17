@@ -1,3 +1,9 @@
+# 2.1.0
+
+### New Features
+
+- Widen peerDependencies to include Next.js v10 & v11
+
 # 2.0.0
 
 ### Breaking Changes
