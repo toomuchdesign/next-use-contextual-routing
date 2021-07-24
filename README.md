@@ -130,8 +130,8 @@ When using **Contextual routing**, default browsers scroll behaviour on page ref
 history.scrollRestoration = 'manual';
 ```
 
-[ci]: https://travis-ci.com/toomuchdesign/next-use-contextual-routing
-[ci-badge]: https://travis-ci.com/toomuchdesign/next-use-contextual-routing.svg?branch=master
+[ci-badge]: https://github.com/toomuchdesign/next-use-contextual-routing/actions/workflows/ci.yml/badge.svg
+[ci]: https://github.com/toomuchdesign/next-use-contextual-routing/actions/workflows/ci.yml
 [npm]: https://www.npmjs.com/package/next-use-contextual-routing
 [npm-badge]: https://img.shields.io/npm/v/next-use-contextual-routing.svg
 [coveralls-badge]: https://coveralls.io/repos/github/toomuchdesign/next-use-contextual-routing/badge.svg?branch=master
