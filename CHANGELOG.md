@@ -1,3 +1,9 @@
+# 2.2.0
+
+### New Features
+
+- Support Next.js v10 -> v12.x
+
 # 2.1.0
 
 ### New Features
