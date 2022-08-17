@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import { useRouter } from 'next/router';
-import stringify from 'qs-stringify';
+import QueryString from 'qs';
+
 export const RETURN_HREF_QUERY_PARAM = '_UCR_return_href';
 
 /**
@@ -26,17 +27,22 @@ export function useContextualRouting() {
   const returnHref = returnHrefQueryParam ?? router.asPath;
   // @NOTE JSON.stringify might be replaced with any hashing solution
   const queryHash = JSON.stringify(watchedQuery);
-  const makeContextualHref = useCallback(
-    (extraParams) =>
-      router.pathname +
-      '?' +
-      stringify(
-        Object.assign({}, router.query, extraParams, {
-          [RETURN_HREF_QUERY_PARAM]: returnHref,
-        })
-      ),
+  const makeContextualLink = useCallback(
+    (url) => {
+      url = require('url').format(url);
+      const extraParams = QueryString.parse(url.substring(url.indexOf("?") + 1));
+
+      const linkProps = {
+        as: url,
+        href: router.pathname + '?' + QueryString.stringify(
+          Object.assign({}, extraParams, { [RETURN_HREF_QUERY_PARAM]: returnHref })
+        )
+      };
+
+      return linkProps;
+    },
     [queryHash, returnHref]
   );
 
-  return { returnHref, makeContextualHref };
+  return { returnHref, makeContextualLink };
 }

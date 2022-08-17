@@ -1,6 +1,8 @@
+import { UrlObject  } from 'url';
+
 export function useContextualRouting(): {
   returnHref: string;
-  makeContextualHref: (extraQueryParams: { [key: string]: any }) => string;
+  makeContextualLink: (url: string | UrlObject) => string;
 };
 
 
