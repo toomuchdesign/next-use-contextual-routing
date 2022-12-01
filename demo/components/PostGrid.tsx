@@ -1,9 +1,9 @@
 import Grid from './Grid';
 import SquaredLink from './SquaredLink';
-import { useContextualRouting } from 'src';
+import { useContextualRouting } from '../../src';
 export const data = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-export default function PostGrid({ small }) {
+export default function PostGrid({ small }: { small?: boolean }) {
   const { makeContextualHref } = useContextualRouting();
 
   return (

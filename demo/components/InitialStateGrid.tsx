@@ -1,6 +1,6 @@
 import Grid from './Grid';
 import SquaredLink from './SquaredLink';
-import { backgroundColors } from 'demo/pages/index';
+import { backgroundColors } from '../pages/index';
 
 const InitialStateGrid = () => {
   return (
