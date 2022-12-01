@@ -130,6 +130,10 @@ When using **Contextual routing**, default browsers scroll behaviour on page ref
 history.scrollRestoration = 'manual';
 ```
 
+### Deploy Next.js on github pages
+
+https://www.viget.com/articles/host-build-and-deploy-next-js-projects-on-github-pages
+
 [ci-badge]: https://github.com/toomuchdesign/next-use-contextual-routing/actions/workflows/ci.yml/badge.svg
 [ci]: https://github.com/toomuchdesign/next-use-contextual-routing/actions/workflows/ci.yml
 [npm]: https://www.npmjs.com/package/next-use-contextual-routing
