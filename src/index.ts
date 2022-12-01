@@ -14,7 +14,7 @@ export const RETURN_HREF_QUERY_PARAM = '_UCR_return_href';
  */
 export function useContextualRouting(): {
   returnHref: string;
-  makeContextualHref: (extraParams?: Record<string, string>) => string;
+  makeContextualHref: (extraParams?: Record<string, string | number>) => string;
 } {
   const router = useRouter();
   const returnHrefQueryParam =
