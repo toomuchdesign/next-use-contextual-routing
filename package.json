@@ -22,7 +22,7 @@
     "test:source:ts": "tsd",
     "test:bundles": "es-check es5 --module './@(dist)/*.js'",
     "format": "prettier --write \"**/*.{js,json,md}\"",
-    "start": "npm run start",
+    "start": "npm run demo:start",
     "demo:start": "cd ./demo && next",
     "demo:compile": "cd ./demo && next build && next export",
     "demo:deploy": "npm run demo:compile && touch demo/out/.nojekyll && gh-pages -d demo/out --dotfiles"
