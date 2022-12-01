@@ -1,6 +1,6 @@
 import React from 'react';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
-import { renderHook as TLRenderHook } from '@testing-library/react-hooks';
+import { renderHook as TLRenderHook } from '@testing-library/react';
 import stringify from 'qs-stringify';
 import { useContextualRouting, RETURN_HREF_QUERY_PARAM } from '../index';
 
