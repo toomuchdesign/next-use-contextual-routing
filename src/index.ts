@@ -12,9 +12,15 @@ export const RETURN_HREF_QUERY_PARAM = '_UCR_return_href';
  * router.pathname: /search/[terms]       stay the same as long as initial page doesn't change
  * router.query:    {"terms": "foo-bar"}  same as above
  */
-export function useContextualRouting() {
+export function useContextualRouting(): {
+  returnHref: string;
+  makeContextualHref: (extraParams?: Record<string, string>) => string;
+} {
   const router = useRouter();
-  const returnHrefQueryParam = router.query[RETURN_HREF_QUERY_PARAM];
+  const returnHrefQueryParam =
+    typeof router.query[RETURN_HREF_QUERY_PARAM] === 'string'
+      ? router.query[RETURN_HREF_QUERY_PARAM]
+      : undefined;
   const watchedQuery = Object.assign({}, router.query);
   delete watchedQuery[RETURN_HREF_QUERY_PARAM];
 
@@ -27,7 +33,7 @@ export function useContextualRouting() {
   // @NOTE JSON.stringify might be replaced with any hashing solution
   const queryHash = JSON.stringify(watchedQuery);
   const makeContextualHref = useCallback(
-    (extraParams) =>
+    (extraParams?: Record<string, string | number>) =>
       router.pathname +
       '?' +
       stringify(

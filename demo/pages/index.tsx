@@ -4,7 +4,7 @@ import Modal from 'react-modal';
 import Post from '../components/Post';
 import PostGrid from '../components/PostGrid';
 import InitialStateGrid from '../components/InitialStateGrid';
-import { useContextualRouting } from '../../src';
+import { useContextualRouting } from '../../dist';
 export const backgroundColors = {
   1: '#9b55b7',
   2: '#e77e22',

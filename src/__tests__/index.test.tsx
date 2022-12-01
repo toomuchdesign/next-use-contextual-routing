@@ -1,10 +1,12 @@
 import React from 'react';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
+import type { NextRouter } from 'next/router';
 import { renderHook as TLRenderHook } from '@testing-library/react';
 import stringify from 'qs-stringify';
 import { useContextualRouting, RETURN_HREF_QUERY_PARAM } from '../index';
 
-const mockRouter = {
+type PartialRouterMock = Partial<NextRouter>;
+const defaultRouterMock: PartialRouterMock = {
   basePath: '',
   pathname: '/',
   route: '/',
@@ -24,27 +26,36 @@ const mockRouter = {
   isFallback: false,
 };
 
-function contextProvider({ router, children }) {
+function contextProvider({
+  router,
+  children,
+}: {
+  router: PartialRouterMock;
+  children: React.ReactNode;
+}) {
   return (
-    <RouterContext.Provider value={{ ...mockRouter, ...router }}>
+    <RouterContext.Provider
+      // @ts-expect-error: we're providing a partial router mock
+      value={{ ...defaultRouterMock, ...router }}
+    >
       {children}
     </RouterContext.Provider>
   );
 }
 
-function renderHook({ router }) {
+function renderHook({ router }: { router: PartialRouterMock }) {
   return TLRenderHook(() => useContextualRouting(), {
     wrapper: ({ children }) => contextProvider({ router, children }),
   });
 }
 
 describe('useContextualRouting', () => {
-  const initialRouter = {
+  const initialRouter: PartialRouterMock = {
     asPath: '/startpage/55?page=2#anchor',
     pathname: '/startpage/[id]',
     query: {
-      id: 55,
-      page: 2,
+      id: '55',
+      page: '2',
     },
   };
 
@@ -54,8 +65,8 @@ describe('useContextualRouting', () => {
     expect(result.current.makeContextualHref({ extraParam: 'foo' })).toBe(
       '/startpage/[id]?' +
         stringify({
-          id: 55,
-          page: 2,
+          id: '55',
+          page: '2',
           extraParam: 'foo',
           [RETURN_HREF_QUERY_PARAM]: '/startpage/55?page=2#anchor',
         })
@@ -87,6 +98,7 @@ describe('useContextualRouting', () => {
       // @NOTE It seems that rerender accepts only newProp (new initial props) so here we mutate the original router object :(
       // https://github.com/testing-library/react-hooks-testing-library/issues/228
       router.asPath = '/post/5';
+      // @ts-expect-error: query  might be undefined
       router.query[RETURN_HREF_QUERY_PARAM] = result.current.returnHref;
       rerender();
 
@@ -94,8 +106,8 @@ describe('useContextualRouting', () => {
       expect(result.current.makeContextualHref()).toBe(
         '/startpage/[id]?' +
           stringify({
-            id: 55,
-            page: 2,
+            id: '55',
+            page: '2',
             [RETURN_HREF_QUERY_PARAM]: '/startpage/55?page=2#anchor',
           })
       );
@@ -111,8 +123,8 @@ describe('useContextualRouting', () => {
       router.asPath = '/startpage/55?page=3#anchor';
       router.pathname = '/startpage/[id]';
       router.query = {
-        id: 55,
-        page: 3,
+        id: '55',
+        page: '3',
       };
 
       rerender();
@@ -121,8 +133,8 @@ describe('useContextualRouting', () => {
       expect(result.current.makeContextualHref()).toBe(
         '/startpage/[id]?' +
           stringify({
-            id: 55,
-            page: 3,
+            id: '55',
+            page: '3',
             [RETURN_HREF_QUERY_PARAM]: '/startpage/55?page=3#anchor',
           })
       );
