@@ -12,19 +12,19 @@
   ],
   "scripts": {
     "clean": "rm -rf dist",
-    "compile": "npm run clean && tsc -p tsconfig.build.json",
+    "build": "npm run clean && tsc -p tsconfig.build.json",
     "preversion": "npm run prepare",
     "version": "git add package.json",
     "postversion": "git push && git push --tags",
-    "prepare": "npm run test:source && npm run compile && npm run test:bundles",
+    "prepare": "npm run test:source && npm run build && npm run test:bundles",
     "test": "jest",
     "test:source": "npm t -- --coverage",
     "test:bundles": "es-check es5 --module './@(dist)/*.js'",
     "format": "prettier --write \"**/*.{js,json,md}\"",
     "start": "npm run demo:start",
     "demo:start": "cd ./demo && next",
-    "demo:compile": "cd ./demo && next build && next export",
-    "demo:deploy": "npm run demo:compile && touch demo/out/.nojekyll && gh-pages -d demo/out --dotfiles"
+    "demo:build": "cd ./demo && next build && next export",
+    "demo:deploy": "npm run demo:build && touch demo/out/.nojekyll && gh-pages -d demo/out --dotfiles"
   },
   "keywords": [
     "next",
