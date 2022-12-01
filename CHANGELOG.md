@@ -1,3 +1,9 @@
+# 3.0.0
+
+### Breaking Changes
+
+- Support only Next.js v13+ and React v18+
+
 # 2.2.0
 
 ### New Features
