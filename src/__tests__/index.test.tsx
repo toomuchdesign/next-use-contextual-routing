@@ -2,7 +2,6 @@ import React from 'react';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
 import type { NextRouter } from 'next/router';
 import { renderHook as TLRenderHook } from '@testing-library/react';
-import stringify from 'qs-stringify';
 import { useContextualRouting, RETURN_HREF_QUERY_PARAM } from '../index';
 
 type PartialRouterMock = Partial<NextRouter>;
@@ -64,12 +63,12 @@ describe('useContextualRouting', () => {
     expect(result.current.returnHref).toBe('/startpage/55?page=2#anchor');
     expect(result.current.makeContextualHref({ extraParam: 'foo' })).toBe(
       '/startpage/[id]?' +
-        stringify({
+        new URLSearchParams({
           id: '55',
           page: '2',
           extraParam: 'foo',
           [RETURN_HREF_QUERY_PARAM]: '/startpage/55?page=2#anchor',
-        })
+        }).toString()
     );
   });
 
@@ -83,9 +82,9 @@ describe('useContextualRouting', () => {
     expect(result.current.returnHref).toBe('/startpage');
     expect(result.current.makeContextualHref()).toBe(
       '/startpage/[id]?' +
-        stringify({
+        new URLSearchParams({
           [RETURN_HREF_QUERY_PARAM]: '/startpage',
-        })
+        }).toString()
     );
   });
 
@@ -105,7 +104,7 @@ describe('useContextualRouting', () => {
       expect(result.current.returnHref).toBe('/startpage/55?page=2#anchor');
       expect(result.current.makeContextualHref()).toBe(
         '/startpage/[id]?' +
-          stringify({
+          new URLSearchParams({
             id: '55',
             page: '2',
             [RETURN_HREF_QUERY_PARAM]: '/startpage/55?page=2#anchor',
@@ -132,11 +131,11 @@ describe('useContextualRouting', () => {
       expect(result.current.returnHref).toBe('/startpage/55?page=3#anchor');
       expect(result.current.makeContextualHref()).toBe(
         '/startpage/[id]?' +
-          stringify({
+          new URLSearchParams({
             id: '55',
             page: '3',
             [RETURN_HREF_QUERY_PARAM]: '/startpage/55?page=3#anchor',
-          })
+          }).toString()
       );
     });
   });
