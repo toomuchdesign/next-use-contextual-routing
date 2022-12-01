@@ -96,7 +96,9 @@ const { makeContextualHref, returnHref } = useContextualRouting();
 #### makeContextualHref
 
 ```ts
-const makeContextualHref: (extraQueryParams: { [key: string]: any }) => string;
+const makeContextualHref: (
+  extraParams?: Record<string, string | number>
+) => string;
 ```
 
 The function returns the path to provide as `href` to start or keep alive contextual navigation. The generated path describes the state of the page to keep alive while contextual navigation is active.
