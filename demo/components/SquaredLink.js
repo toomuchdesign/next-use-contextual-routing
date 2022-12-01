@@ -3,17 +3,23 @@ import Link from 'next/link';
 import styles from './SquaredLink.module.css';
 
 export default function SquaredLink({
-  small,
   href,
   as,
   scroll,
   shallow,
-  ...props
+  style,
+  children,
 }) {
-  console.log(props);
   return (
-    <Link href={href} as={as} scroll={scroll} shallow={shallow}>
-      <a className={styles.postCard} {...props} />
+    <Link
+      className={styles.postCard}
+      href={href}
+      as={as}
+      scroll={scroll}
+      shallow={shallow}
+      style={style}
+    >
+      {children}
     </Link>
   );
 }
