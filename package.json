@@ -43,9 +43,6 @@
   },
   "author": "Andrea Carraro <me@andreacarraro.it>",
   "license": "ISC",
-  "dependencies": {
-    "qs-stringify": "^1.2.1"
-  },
   "devDependencies": {
     "@changesets/cli": "^2.27.7",
     "@testing-library/react": "^16.0.0",
@@ -55,6 +52,7 @@
     "jest-environment-jsdom": "^29.3.1",
     "next": "^15.0.0",
     "prettier": "^3.3.2",
+    "qs-stringify": "^1.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-modal": "^3.16.1",
