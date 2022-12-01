@@ -1,7 +1,17 @@
 import styles from './styles.module.css';
 import PostGrid from './PostGrid';
 
-const Post = ({ id, pathname, pageState, showPostGrid }) => {
+const Post = ({
+  id,
+  pathname,
+  pageState,
+  showPostGrid,
+}: {
+  id: string;
+  pathname: string;
+  pageState?: string;
+  showPostGrid?: boolean;
+}) => {
   return (
     <div className={styles.post}>
       <h2>I am the post {id}</h2>

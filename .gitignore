@@ -17,3 +17,4 @@ demo/out
 !.prettierrc
 !.travis.yml
 !.github
+!.nvmrc

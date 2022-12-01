@@ -1,5 +1,5 @@
 import React from 'react';
-import 'demo/styles.css';
+import '../global.css';
 
 export default function App({ Component, pageProps }) {
   return <Component {...pageProps} />;

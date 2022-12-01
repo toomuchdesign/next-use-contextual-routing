@@ -2,29 +2,27 @@
   "name": "next-use-contextual-routing",
   "description": "Generate Next.js contextual routing paths",
   "version": "2.3.0",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
-  "types": "src/index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "dist",
-    "src",
-    "!__tests__"
+    "dist"
   ],
   "scripts": {
     "clean": "rm -rf dist",
-    "compile": "npm run clean && rollup -c",
+    "build": "npm run clean && tsc -p tsconfig.build.json",
     "preversion": "npm run prepare",
     "version": "git add package.json",
     "postversion": "git push && git push --tags",
-    "prepare": "npm run test:source && npm run compile && npm run test:bundles",
+    "prepare": "npm run test:source && npm run build && npm run test:bundles",
     "test": "jest",
-    "test:source": "npm run test:source:ts && npm t -- --coverage",
-    "test:source:ts": "tsd",
+    "test:source": "npm t -- --coverage",
     "test:bundles": "es-check es5 --module './@(dist)/*.js'",
     "format": "prettier --write \"**/*.{js,json,md}\"",
+    "start": "npm run demo:start",
     "demo:start": "cd ./demo && next",
-    "demo:compile": "cd ./demo && next build && next export",
-    "demo:deploy": "npm run demo:compile && touch demo/out/.nojekyll && gh-pages -d demo/out --dotfiles"
+    "demo:build": "cd ./demo && next build && next export",
+    "demo:deploy": "npm run demo:build && touch demo/out/.nojekyll && gh-pages -d demo/out --dotfiles"
   },
   "keywords": [
     "next",
@@ -46,30 +44,30 @@
     "qs-stringify": "^1.2.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.6",
-    "@babel/plugin-transform-react-jsx": "^7.14.5",
-    "@babel/preset-env": "^7.14.7",
-    "@rollup/plugin-babel": "^5.2.1",
-    "@testing-library/react-hooks": "^7.0.1",
+    "@testing-library/react": "^13.4.0",
+    "@types/jest": "^29.2.3",
+    "@types/react": "^18.0.25",
     "es-check": "^5.1.1",
     "gh-pages": "^3.1.0",
     "husky": "^4.0.0",
-    "jest": "^26.4.2",
+    "jest": "^29.3.1",
+    "jest-environment-jsdom": "^29.3.1",
     "lint-staged": "^10.0.0",
-    "next": "^12.1.0",
+    "next": "^13.0.5",
     "prettier": "^2.0.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-modal": "^3.14.3",
-    "react-test-renderer": "^17.0.2",
-    "rollup": "^2.28.2",
-    "tsd": "^0.13.1"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-modal": "^3.16.1",
+    "react-test-renderer": "^18.2.0",
+    "ts-jest": "^29.0.3",
+    "typescript": "^4.9.3"
   },
   "peerDependencies": {
-    "next": "^9.0.0 || ^10.0.0 || ^11.0.0 || ^12.0.0",
-    "react": ">=16.8.0"
+    "next": "^13.0.0",
+    "react": ">=18.0.0"
   },
   "jest": {
+    "preset": "ts-jest/presets/js-with-ts",
     "testPathIgnorePatterns": [
       ".test-d\\.ts"
     ],
@@ -79,10 +77,8 @@
     "coverageReporters": [
       "text",
       "lcov"
-    ]
-  },
-  "tsd": {
-    "directory": "src/__tests__"
+    ],
+    "testEnvironment": "jsdom"
   },
   "husky": {
     "hooks": {

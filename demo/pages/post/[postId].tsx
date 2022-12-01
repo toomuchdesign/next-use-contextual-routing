@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
-import Post from 'demo/components/Post';
-import { data } from 'demo/components/PostGrid';
+import Post from '../../components/Post';
+import { data } from '../../components/PostGrid';
 
 const PostPage = ({ id }) => {
   const router = useRouter();
