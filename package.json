@@ -21,7 +21,7 @@
     "format": "prettier --write \"**/*.{js,json,md}\"",
     "start": "npm run demo:start",
     "demo:start": "cd ./demo && next",
-    "demo:build": "cd ./demo && next build && next export",
+    "demo:build": "npm run build && cd ./demo && next build && next export",
     "demo:deploy": "npm run demo:build && touch demo/out/.nojekyll && gh-pages -d demo/out --dotfiles"
   },
   "keywords": [
