@@ -113,6 +113,13 @@ const returnHref: string;
 
 The path to return to to close contextual navigation.
 
+## Next.js versions support
+
+| Next use contextual routing | Next.js       |
+| --------------------------- | ------------- |
+| v2.2.0                      | v9.X -> v12.X |
+| v3.0.0 +                    | v13.X         |
+
 ## Notes
 
 ### Naming
@@ -132,7 +139,7 @@ When using **Contextual routing**, default browsers scroll behaviour on page ref
 history.scrollRestoration = 'manual';
 ```
 
-### Deploy Next.js on github pages
+### Devnote: deploy Next.js on GitHub pages
 
 https://www.viget.com/articles/host-build-and-deploy-next-js-projects-on-github-pages
 
