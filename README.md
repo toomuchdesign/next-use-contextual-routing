@@ -96,7 +96,9 @@ const { makeContextualHref, returnHref } = useContextualRouting();
 #### makeContextualHref
 
 ```ts
-const makeContextualHref: (extraQueryParams: { [key: string]: any }) => string;
+const makeContextualHref: (
+  extraParams?: Record<string, string | number>
+) => string;
 ```
 
 The function returns the path to provide as `href` to start or keep alive contextual navigation. The generated path describes the state of the page to keep alive while contextual navigation is active.
@@ -110,6 +112,13 @@ const returnHref: string;
 ```
 
 The path to return to to close contextual navigation.
+
+## Next.js versions support
+
+| Next use contextual routing | Next.js       |
+| --------------------------- | ------------- |
+| v2.2.0                      | v9.X -> v12.X |
+| v3.0.0 +                    | v13.X         |
 
 ## Notes
 
@@ -130,7 +139,7 @@ When using **Contextual routing**, default browsers scroll behaviour on page ref
 history.scrollRestoration = 'manual';
 ```
 
-### Deploy Next.js on github pages
+### Devnote: deploy Next.js on GitHub pages
 
 https://www.viget.com/articles/host-build-and-deploy-next-js-projects-on-github-pages
 
