@@ -40,9 +40,6 @@
   },
   "author": "Andrea Carraro <me@andreacarraro.it>",
   "license": "ISC",
-  "dependencies": {
-    "qs-stringify": "^1.2.1"
-  },
   "devDependencies": {
     "@testing-library/react": "^13.4.0",
     "@types/jest": "^29.2.3",
