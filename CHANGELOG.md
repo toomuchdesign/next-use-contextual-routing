@@ -1,3 +1,9 @@
+# 3.0.1
+
+### Bugfixes
+
+- Enable module type in package.json
+
 # 3.0.0
 
 ### Breaking Changes
