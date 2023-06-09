@@ -1,3 +1,7 @@
+# 3.0.2
+
+### Deprecate project
+
 # 3.0.1
 
 ### Bugfixes
