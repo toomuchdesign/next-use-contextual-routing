@@ -1,7 +1,7 @@
 {
   "name": "next-use-contextual-routing",
   "description": "Generate Next.js contextual routing paths",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
