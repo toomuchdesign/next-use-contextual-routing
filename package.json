@@ -19,6 +19,7 @@
     "test": "jest",
     "test:source": "npm t -- --coverage",
     "test:bundles": "es-check es5 --module './@(dist)/*.js'",
+    "tag": "node ./scripts/tag.js",
     "format": "prettier --write \"**/*.{js,json,md}\"",
     "start": "npm run demo:start",
     "demo:start": "cd ./demo && next",
@@ -45,6 +46,7 @@
     "qs-stringify": "^1.2.1"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.27.7",
     "@testing-library/react": "^13.4.0",
     "@types/jest": "^29.2.3",
     "@types/react": "^18.0.25",
