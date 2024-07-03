@@ -1,3 +1,7 @@
+# 3.1.0
+
+### Undeprecate project
+
 # 3.0.2
 
 ### Deprecate project
