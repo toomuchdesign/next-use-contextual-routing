@@ -18,3 +18,4 @@ demo/out
 !.travis.yml
 !.github
 !.nvmrc
+!.changeset
