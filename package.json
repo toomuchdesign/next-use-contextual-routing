@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.7",
-    "@testing-library/react": "^13.4.0",
+    "@testing-library/react": "^16.0.0",
     "@types/jest": "^29.2.3",
     "@types/react": "^18.0.25",
     "es-check": "^5.1.1",
