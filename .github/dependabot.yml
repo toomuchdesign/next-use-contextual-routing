@@ -1,0 +1,31 @@
+version: 2
+updates:
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+    groups:
+      testing-library:
+        patterns:
+          - '@testing-library/*'
+      react:
+        patterns:
+          - 'react'
+          - 'react-dom'
+          - '@types/react'
+          - '@types/react-dom'
+      jest:
+        patterns:
+          - 'jest*'
+          - 'ts-jest'
+          - '@types/jest'
+
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+    groups:
+      upload-download-artifact:
+        patterns:
+          - 'actions/upload-artifact'
+          - 'actions/download-artifact'
