@@ -1,14 +1,9 @@
-# Next use contextual routing (deprecated)
+# Next use contextual routing
 
-[![deprecated](http://badges.github.io/stability-badges/dist/deprecated.svg)](http://github.com/badges/stability-badges)
 [![Build status][ci-badge]][ci]
 [![Test coverage report][coveralls-badge]][coveralls]
 [![Npm version][npm-badge]][npm]
 [![Bundle size][bundlephobia-badge]][bundlephobia]
-
-## This project is deprecated
-
-Next.js v13.3 introduced [Parallel Routes and Intercepting Routes](https://nextjs.org/blog/next-13-3#parallel-routes-and-interception) which can natively provide the same functionality of this library.
 
 ## Intro
 
