@@ -1,5 +1,11 @@
 # next-use-contextual-routing
 
+## 3.1.0
+
+### Minor Changes
+
+- 4b0cd8a: Undeprecate project
+
 ## 3.0.2
 
 ### Deprecate project
