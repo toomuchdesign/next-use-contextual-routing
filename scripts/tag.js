@@ -1,8 +1,10 @@
-const util = require('node:util');
-const exec = util.promisify(require('node:child_process').exec);
-const { version } = require('../package.json');
+import util from 'node:util';
+import { exec as callbackExec } from 'node:child_process';
+import packageJson from '../package.json' assert { type: 'json' };
+const exec = util.promisify(callbackExec);
 
 async function tag() {
+  const { version } = packageJson;
   const currentVersion = `v${version}`;
   await exec('git fetch --all --tags');
   const gitTagResponse = await exec('git tag');
