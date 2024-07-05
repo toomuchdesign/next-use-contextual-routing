@@ -11,7 +11,10 @@ if (process.env.BUILD_TARGET === 'github-pages') {
   basePath = `/${repo}`;
 }
 
-module.exports = {
+
+const nextConfig = {
   assetPrefix: assetPrefix,
-  basePath: basePath,
-};
+  basePath: basePath
+}
+
+export default nextConfig
