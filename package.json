@@ -23,7 +23,7 @@
     "format": "prettier --write \"**/*.{js,json,md}\"",
     "start": "npm run demo:start",
     "demo:start": "cd ./demo && next",
-    "demo:build": "npm run build && cd ./demo && BUILD_TARGET=github-pages next build && touch demo/out/.nojekyll"
+    "demo:build": "npm run build && cd ./demo && BUILD_TARGET=github-pages next build && touch ./out/.nojekyll"
   },
   "keywords": [
     "next",
