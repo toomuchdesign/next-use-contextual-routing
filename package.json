@@ -15,12 +15,15 @@
     "preversion": "npm run prepare",
     "version": "git add package.json",
     "postversion": "git push && git push --tags",
-    "prepare": "npx simple-git-hooks && npm run test:source && npm run build && npm run test:bundles",
-    "test": "jest",
-    "test:source": "npm t -- --coverage",
+    "prepare": "npx simple-git-hooks && npm run source:check && npm run test && npm run build && npm run test:bundles",
+    "test": "jest --coverage",
     "test:bundles": "es-check es5 --module './@(dist)/*.js'",
     "tag": "node ./scripts/tag.js",
-    "format": "prettier --write \"**/*.{js,json,md}\"",
+    "prettier:check": "prettier . --check",
+    "prettier:fix": "npm run prettier:check -- --write",
+    "type:check": "tsc --noEmit",
+    "source:check": "npm run prettier:check && npm run type:check",
+    "source:fix": "npm run prettier:fix",
     "start": "npm run demo:start",
     "demo:start": "cd ./demo && next",
     "demo:build": "npm run build && cd ./demo && BUILD_TARGET=github-pages next build && touch ./out/.nojekyll"
@@ -82,6 +85,6 @@
     "testEnvironment": "jsdom"
   },
   "simple-git-hooks": {
-    "pre-commit": "npm run test:source"
+    "pre-commit": "npm run source:check && npm run test"
   }
 }
