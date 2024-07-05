@@ -1,5 +1,11 @@
 # next-use-contextual-routing
 
+## 3.2.0
+
+### Minor Changes
+
+- 638f4ed: Support next.js v14
+
 ## 3.1.0
 
 ### Minor Changes
