@@ -11,5 +11,5 @@
     "allowJs": true,
     "jsx": "react"
   },
-  "include": ["./src", "./demo"]
+  "include": ["./src"]
 }
