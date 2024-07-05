@@ -1,0 +1,28 @@
+name: Deploy to GH pages
+
+on:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+
+      - run: npm ci
+      - run: npm run demo:build
+
+      - name: Deploy GH pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: demo/out

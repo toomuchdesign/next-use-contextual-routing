@@ -1,4 +1,4 @@
-import { stringify } from 'node:querystring';
+import { stringify } from 'querystring';
 import React from 'react';
 import { RouterContext } from 'next/dist/shared/lib/router-context.shared-runtime';
 import type { NextRouter } from 'next-13/router';
