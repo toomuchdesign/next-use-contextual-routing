@@ -1,7 +1,7 @@
 import { stringify } from 'querystring';
 import React from 'react';
 import { RouterContext } from 'next/dist/shared/lib/router-context.shared-runtime';
-import type { NextRouter } from 'next-14/router';
+import type { NextRouter } from 'next/router';
 import { renderHook as TLRenderHook } from '@testing-library/react';
 import { useContextualRouting, RETURN_HREF_QUERY_PARAM } from '../index';
 
@@ -49,7 +49,7 @@ function renderHook({ router }: { router: PartialRouterMock }) {
   });
 }
 
-describe('Next v14', () => {
+describe('Next v15', () => {
   describe('useContextualRouting', () => {
     const initialRouter: PartialRouterMock = {
       asPath: '/startpage/55?page=2#anchor',
