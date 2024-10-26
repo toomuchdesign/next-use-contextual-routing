@@ -1,9 +1,10 @@
+import { describe, it, expect, vi } from 'vitest';
 import { stringify } from 'querystring';
 import React from 'react';
-import { RouterContext } from 'next/dist/shared/lib/router-context.shared-runtime';
-import type { NextRouter } from 'next/router';
 import { renderHook as TLRenderHook } from '@testing-library/react';
-import { useContextualRouting, RETURN_HREF_QUERY_PARAM } from '../index';
+import { RouterContext } from 'next/dist/shared/lib/router-context.shared-runtime.js';
+import type { NextRouter } from 'next/router.js';
+import { useContextualRouting, RETURN_HREF_QUERY_PARAM } from '../index.js';
 
 type PartialRouterMock = Partial<NextRouter>;
 const defaultRouterMock: PartialRouterMock = {
@@ -12,16 +13,16 @@ const defaultRouterMock: PartialRouterMock = {
   route: '/',
   asPath: '/',
   query: {},
-  push: jest.fn(),
-  replace: jest.fn(),
-  reload: jest.fn(),
-  back: jest.fn(),
-  prefetch: jest.fn(),
-  beforePopState: jest.fn(),
+  push: vi.fn(),
+  replace: vi.fn(),
+  reload: vi.fn(),
+  back: vi.fn(),
+  prefetch: vi.fn(),
+  beforePopState: vi.fn(),
   events: {
-    on: jest.fn(),
-    off: jest.fn(),
-    emit: jest.fn(),
+    on: vi.fn(),
+    off: vi.fn(),
+    emit: vi.fn(),
   },
   isFallback: false,
 };
