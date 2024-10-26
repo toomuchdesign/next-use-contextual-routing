@@ -7,8 +7,6 @@ on:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
-permissions: write-all
-
 jobs:
   release:
     name: Release new version
@@ -29,4 +27,4 @@ jobs:
         with:
           publish: npm run tag
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
