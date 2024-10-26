@@ -1,10 +1,10 @@
 import { describe, it, expect, vi } from 'vitest';
 import { stringify } from 'querystring';
 import React from 'react';
-import { RouterContext } from 'next/dist/shared/lib/router-context.shared-runtime';
-import type { NextRouter } from 'next/router';
 import { renderHook as TLRenderHook } from '@testing-library/react';
-import { useContextualRouting, RETURN_HREF_QUERY_PARAM } from '../index';
+import { RouterContext } from 'next/dist/shared/lib/router-context.shared-runtime.js';
+import type { NextRouter } from 'next/router.js';
+import { useContextualRouting, RETURN_HREF_QUERY_PARAM } from '../index.js';
 
 type PartialRouterMock = Partial<NextRouter>;
 const defaultRouterMock: PartialRouterMock = {

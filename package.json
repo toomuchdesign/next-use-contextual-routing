@@ -2,6 +2,22 @@
   "name": "next-use-contextual-routing",
   "description": "Generate Next.js contextual routing paths",
   "version": "3.2.0",
+  "keywords": [
+    "next",
+    "next.js",
+    "contextual",
+    "routing",
+    "snowlift",
+    "route as modal",
+    "modal route",
+    "hook"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toomuchdesign/next-use-contextual-routing.git"
+  },
+  "author": "Andrea Carraro <me@andreacarraro.it>",
+  "license": "ISC",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -9,6 +25,9 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "clean": "rm -rf dist",
     "build": "npm run clean && tsc -p tsconfig.build.json",
@@ -28,25 +47,10 @@
     "demo:start": "cd ./demo && next",
     "demo:build": "npm run build && cd ./demo && BUILD_TARGET=github-pages next build && touch ./out/.nojekyll"
   },
-  "keywords": [
-    "next",
-    "next.js",
-    "contextual",
-    "routing",
-    "snowlift",
-    "route as modal",
-    "modal route",
-    "hook"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/toomuchdesign/next-use-contextual-routing.git"
-  },
-  "author": "Andrea Carraro <me@andreacarraro.it>",
-  "license": "ISC",
   "devDependencies": {
     "@changesets/cli": "^2.27.7",
     "@testing-library/react": "^16.0.0",
+    "@tsconfig/node20": "^20.1.4",
     "@types/jest": "^29.2.3",
     "@types/react": "^18.0.25",
     "@vitest/coverage-v8": "^2.1.3",
