@@ -14,11 +14,10 @@ updates:
           - 'react-dom'
           - '@types/react'
           - '@types/react-dom'
-      jest:
+      vitest:
         patterns:
-          - 'jest*'
-          - 'ts-jest'
-          - '@types/jest'
+          - 'vitest'
+          - '@vitest/*'
 
   - package-ecosystem: 'github-actions'
     directory: '/'
