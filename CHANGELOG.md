@@ -1,5 +1,17 @@
 # next-use-contextual-routing
 
+## 4.0.0
+
+### Major Changes
+
+- d906493: refactor: drop support for Next.js v13/v14
+- 51967c2: refactor: compile to ES6
+
+### Minor Changes
+
+- d906493: feat: support Next.js v15
+- 232c3b3: refactor: remove qs-stringify dependency in favour of native URLSearchParams
+
 ## 3.2.0
 
 ### Minor Changes
