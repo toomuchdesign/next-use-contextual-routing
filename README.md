@@ -119,10 +119,10 @@ The path to return to to close contextual navigation.
 
 | Next use contextual routing | Next.js        |
 | --------------------------- | -------------- |
-| v2.2.0                      | v9.x -> v12.x  |
-| v3.0.0                      | v13.x          |
-| v3.2.0 +                    | v13.x -> v14.x |
-| v4.0.0 +                    | v15.x          |
+| v2.2.0                      | v9.X -> v12.X  |
+| v3.0.0                      | v13.X          |
+| v3.2.0 +                    | v13.X -> v14.X |
+| v4.0.0 +                    | v15.X          |
 
 ## Notes
 
