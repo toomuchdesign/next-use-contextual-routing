@@ -1,5 +1,5 @@
+import { stringify } from 'node:querystring';
 import { describe, it, expect, vi } from 'vitest';
-import { stringify } from 'querystring';
 import React from 'react';
 import { renderHook as TLRenderHook } from '@testing-library/react';
 import { RouterContext } from 'next/dist/shared/lib/router-context.shared-runtime.js';
