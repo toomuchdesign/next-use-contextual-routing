@@ -5,15 +5,13 @@ updates:
     schedule:
       interval: 'daily'
     groups:
-      testing-library:
-        patterns:
-          - '@testing-library/*'
       react:
         patterns:
           - 'react'
           - 'react-dom'
           - '@types/react'
           - '@types/react-dom'
+          - '@testing-library/*'
       vitest:
         patterns:
           - 'vitest'
