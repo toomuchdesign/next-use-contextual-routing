@@ -5,7 +5,8 @@
     "declaration": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "jsx": "react"
+    "jsx": "react",
+    "types": ["node"]
   },
   "include": ["./src"]
 }
