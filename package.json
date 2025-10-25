@@ -29,15 +29,13 @@
     "access": "public"
   },
   "scripts": {
-    "clean": "rm -rf dist",
-    "build": "npm run clean && tsc -p tsconfig.build.json",
+    "build": "rimraf ./dist && tsc -p tsconfig.build.json",
+    "test": "vitest --config ./vitest.config.mts",
     "preversion": "npm run prepare",
     "version": "git add package.json",
     "postversion": "git push && git push --tags",
     "prepare": "npx simple-git-hooks && npm run source:check && npm run test -- --run && npm run build",
-    "test": "vitest --config ./vitest.config.mts",
-    "test:a": "vitest --config ./vitest.config.mts",
-    "tag": "node ./scripts/tag.js",
+    "release": "npm run prepare && npx changeset publish",
     "prettier:check": "prettier . --check",
     "prettier:fix": "npm run prettier:check -- --write",
     "type:check": "tsc --noEmit",
@@ -48,6 +46,7 @@
     "demo:build": "npm run build && cd ./demo && BUILD_TARGET=github-pages next build && touch ./out/.nojekyll"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^0.5.1",
     "@changesets/cli": "^2.27.7",
     "@testing-library/react": "^16.0.0",
     "@tsconfig/node20": "^20.1.4",
@@ -62,6 +61,7 @@
     "react-dom": "^19.1.0",
     "react-modal": "^3.16.1",
     "react-test-renderer": "^19.1.0",
+    "rimraf": "^6.0.1",
     "simple-git-hooks": "^2.11.1",
     "typescript": "^5.5.3",
     "vitest": "^4.0.0"
