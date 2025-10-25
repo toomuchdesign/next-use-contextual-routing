@@ -1,5 +1,11 @@
 # next-use-contextual-routing
 
+## 4.1.0
+
+### Minor Changes
+
+- [#252](https://github.com/toomuchdesign/next-use-contextual-routing/pull/252) [`70f96cf`](https://github.com/toomuchdesign/next-use-contextual-routing/commit/70f96cf050810be5724d5080a50939be69691823) Thanks [@toomuchdesign](https://github.com/toomuchdesign)! - Add support for Next.js v16
+
 ## 4.0.0
 
 ### Major Changes
