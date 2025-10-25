@@ -54,7 +54,7 @@
     "@types/react": "^19.1.6",
     "@vitest/coverage-v8": "^4.0.0",
     "jsdom": "^26.0.0",
-    "next": "^15.0.0",
+    "next": "^16.0.0",
     "prettier": "^3.3.2",
     "qs-stringify": "^1.2.1",
     "react": "^19.1.0",
@@ -67,7 +67,7 @@
     "vitest": "^4.0.0"
   },
   "peerDependencies": {
-    "next": "^15.0.0",
+    "next": "^15.0.0 || ^16.0.0",
     "react": ">=18.0.0"
   },
   "simple-git-hooks": {
