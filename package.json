@@ -31,9 +31,6 @@
   "scripts": {
     "build": "rimraf ./dist && tsc -p tsconfig.build.json",
     "test": "vitest --config ./vitest.config.mts",
-    "preversion": "npm run prepare",
-    "version": "git add package.json",
-    "postversion": "git push && git push --tags",
     "prepare": "npx simple-git-hooks && npm run source:check && npm run test -- --run && npm run build",
     "release": "npm run prepare && npx changeset publish",
     "prettier:check": "prettier . --check",
