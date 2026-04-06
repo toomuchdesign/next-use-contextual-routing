@@ -60,7 +60,7 @@
     "react-test-renderer": "^19.1.0",
     "rimraf": "^6.0.1",
     "simple-git-hooks": "^2.11.1",
-    "typescript": "^5.5.3",
+    "typescript": "^6.0.2",
     "vitest": "^4.0.0"
   },
   "peerDependencies": {
