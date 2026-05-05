@@ -50,7 +50,7 @@
     "@types/node": "^20.19.0",
     "@types/react": "^19.1.6",
     "@vitest/coverage-v8": "^4.0.0",
-    "jsdom": "^27.1.0",
+    "jsdom": "^28.0.0",
     "next": "^16.0.0",
     "prettier": "^3.3.2",
     "qs-stringify": "^1.2.1",
