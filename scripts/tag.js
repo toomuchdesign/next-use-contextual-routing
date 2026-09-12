@@ -1,6 +1,6 @@
 import util from 'node:util';
 import { exec as callbackExec } from 'node:child_process';
-import packageJson from '../package.json' assert { type: 'json' };
+import packageJson from '../package.json' with { type: 'json' };
 const exec = util.promisify(callbackExec);
 
 async function tag() {
