@@ -52,7 +52,7 @@
     "@vitest/coverage-v8": "^4.0.0",
     "jsdom": "^29.0.1",
     "next": "^16.0.0",
-    "prettier": "^3.3.2",
+    "prettier": "^3.9.6",
     "qs-stringify": "^1.2.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
