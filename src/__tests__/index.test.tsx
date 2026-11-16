@@ -91,6 +91,52 @@ describe('Next v15', () => {
       );
     });
 
+    it('preserves repeated query values and their encoding', () => {
+      const router = {
+        pathname: '/search',
+        asPath: '/search?tag=a%2Cb&tag=x%20y',
+        query: { tag: ['a,b', 'x y'] },
+      };
+      const { result } = renderHook({ router });
+
+      expect(result.current.makeContextualHref({ id: 3 })).toBe(
+        '/search?tag=a%2Cb&tag=x+y&id=3&_UCR_return_href=%2Fsearch%3Ftag%3Da%252Cb%26tag%3Dx%2520y'
+      );
+    });
+
+    it('preserves catch-all route segments as repeated query values', () => {
+      const router = {
+        pathname: '/docs/[...slug]',
+        asPath: '/docs/guide/intro',
+        query: { slug: ['guide', 'intro'] },
+      };
+      const { result } = renderHook({ router });
+
+      expect(result.current.makeContextualHref({ id: '3' })).toBe(
+        '/docs/[...slug]?slug=guide&slug=intro&id=3&_UCR_return_href=%2Fdocs%2Fguide%2Fintro'
+      );
+    });
+
+    it('lets extra parameters replace arrays and keeps the original return href', () => {
+      const router = {
+        pathname: '/search',
+        asPath: '/search?tag=a&tag=b',
+        query: {
+          tag: ['a', 'b'],
+          empty: [],
+          [RETURN_HREF_QUERY_PARAM]: '/origin',
+        },
+      };
+      const { result } = renderHook({ router });
+
+      expect(
+        result.current.makeContextualHref({
+          tag: 7,
+          [RETURN_HREF_QUERY_PARAM]: '/override',
+        })
+      ).toBe('/search?tag=7&_UCR_return_href=%2Forigin');
+    });
+
     describe('Contextual routing starts', () => {
       it('preserves hrefs pointing to the page where contextual routing started from', () => {
         const router = { ...initialRouter };
