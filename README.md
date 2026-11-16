@@ -106,6 +106,7 @@ const makeContextualHref: (
 The function returns the path to provide as `href` to start or keep alive contextual navigation. The generated path describes the state of the page to keep alive while contextual navigation is active.
 
 It optionally accepts an object describing **extra parameters** to append to contextual navigation `href`.
+Array values from the current router query, such as catch-all route segments, are serialized as repeated query parameters. Since a query string can't express a one-item array, a single-segment catch-all reaches the page as a string: normalize it with `[router.query.slug].flat()`. Extra parameters replace existing query values with the same key.
 
 #### returnHref
 
