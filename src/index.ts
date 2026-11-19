@@ -32,14 +32,24 @@ export function useContextualRouting(): {
   // @NOTE JSON.stringify might be replaced with any hashing solution
   const queryHash = JSON.stringify(watchedQuery);
   const makeContextualHref = useCallback(
-    (extraParams?: Record<string, string | number>) =>
-      router.pathname +
-      '?' +
-      new URLSearchParams({
+    (extraParams?: Record<string, string | number>) => {
+      const params = new URLSearchParams();
+      const query = {
         ...router.query,
         ...extraParams,
         [RETURN_HREF_QUERY_PARAM]: returnHref,
-      }).toString(),
+      };
+
+      for (const [key, value] of Object.entries(query)) {
+        if (Array.isArray(value)) {
+          for (const item of value) params.append(key, item);
+        } else {
+          params.append(key, String(value));
+        }
+      }
+
+      return router.pathname + '?' + params.toString();
+    },
     [queryHash, returnHref]
   );
 
