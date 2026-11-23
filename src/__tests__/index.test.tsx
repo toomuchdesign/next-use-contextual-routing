@@ -3,6 +3,7 @@ import { describe, it, expect, vi } from 'vitest';
 import React from 'react';
 import { renderHook as TLRenderHook } from '@testing-library/react';
 import { RouterContext } from 'next/dist/shared/lib/router-context.shared-runtime.js';
+import { parseRelativeUrl } from 'next/dist/shared/lib/router/utils/parse-relative-url.js';
 import type { NextRouter } from 'next/router.js';
 import { useContextualRouting, RETURN_HREF_QUERY_PARAM } from '../index.js';
 
@@ -89,6 +90,97 @@ describe('Next v15', () => {
             [RETURN_HREF_QUERY_PARAM]: '/startpage',
           })
       );
+    });
+
+    it('preserves repeated query values and their encoding', () => {
+      const router = {
+        pathname: '/search',
+        asPath: '/search?tag=a%2Cb&tag=x%20y',
+        query: { tag: ['a,b', 'x y'] },
+      };
+      const { result } = renderHook({ router });
+      const href = result.current.makeContextualHref({ id: 3 });
+
+      expect(href).toBe(
+        '/search?tag=a%2Cb&tag=x+y&id=3&_UCR_return_href=%2Fsearch%3Ftag%3Da%252Cb%26tag%3Dx%2520y'
+      );
+      expect(parseRelativeUrl(href).query).toEqual({
+        tag: ['a,b', 'x y'],
+        id: '3',
+        [RETURN_HREF_QUERY_PARAM]: '/search?tag=a%2Cb&tag=x%20y',
+      });
+    });
+
+    it('preserves catch-all route segments as repeated query values', () => {
+      const router = {
+        pathname: '/docs/[...slug]',
+        asPath: '/docs/guide/intro',
+        query: { slug: ['guide', 'intro'] },
+      };
+      const { result } = renderHook({ router });
+      const href = result.current.makeContextualHref({ id: '3' });
+
+      expect(href).toBe(
+        '/docs/[...slug]?slug=guide&slug=intro&id=3&_UCR_return_href=%2Fdocs%2Fguide%2Fintro'
+      );
+      expect(parseRelativeUrl(href).query.slug).toEqual(['guide', 'intro']);
+    });
+
+    // A query string can't express a one-item array
+    it('turns single-segment catch-all routes into a string query value', () => {
+      const router = {
+        pathname: '/docs/[...slug]',
+        asPath: '/docs/guide',
+        query: { slug: ['guide'] },
+      };
+      const { result } = renderHook({ router });
+      const href = result.current.makeContextualHref();
+
+      expect(href).toBe(
+        '/docs/[...slug]?slug=guide&_UCR_return_href=%2Fdocs%2Fguide'
+      );
+      expect(parseRelativeUrl(href).query.slug).toBe('guide');
+    });
+
+    it('lets extra parameters replace array values', () => {
+      const router = {
+        pathname: '/search',
+        asPath: '/search?tag=a&tag=b',
+        query: { tag: ['a', 'b'] },
+      };
+      const { result } = renderHook({ router });
+
+      expect(result.current.makeContextualHref({ tag: 7 })).toBe(
+        '/search?tag=7&_UCR_return_href=%2Fsearch%3Ftag%3Da%26tag%3Db'
+      );
+    });
+
+    it('omits empty array values', () => {
+      const router = {
+        pathname: '/search',
+        asPath: '/search',
+        query: { empty: [] },
+      };
+      const { result } = renderHook({ router });
+
+      expect(result.current.makeContextualHref()).toBe(
+        '/search?_UCR_return_href=%2Fsearch'
+      );
+    });
+
+    it('keeps the original return href over extra parameters', () => {
+      const router = {
+        pathname: '/search',
+        asPath: '/search',
+        query: { [RETURN_HREF_QUERY_PARAM]: '/origin' },
+      };
+      const { result } = renderHook({ router });
+
+      expect(
+        result.current.makeContextualHref({
+          [RETURN_HREF_QUERY_PARAM]: '/override',
+        })
+      ).toBe('/search?_UCR_return_href=%2Forigin');
     });
 
     describe('Contextual routing starts', () => {
