@@ -1,5 +1,11 @@
 # next-use-contextual-routing
 
+## 4.1.1
+
+### Patch Changes
+
+- [#426](https://github.com/toomuchdesign/next-use-contextual-routing/pull/426) [`e1b042f`](https://github.com/toomuchdesign/next-use-contextual-routing/commit/e1b042f23b4ef9ba63af8b4c58f62b27290c6f7f) - Preserve array-valued router query parameters as repeated keys in contextual hrefs. Pages rendered during contextual navigation now receive these values as arrays instead of comma-joined strings, and empty arrays are omitted instead of serialized as empty values.
+
 ## 4.1.0
 
 ### Minor Changes
