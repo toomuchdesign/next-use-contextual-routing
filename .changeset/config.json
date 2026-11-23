@@ -1,8 +1,11 @@
 {
-  "$schema": "https://unpkg.com/@changesets/config@3.0.2/schema.json",
+  "$schema": "https://unpkg.com/@changesets/config@4.0.1/schema.json",
   "changelog": [
     "@changesets/changelog-github",
-    { "repo": "toomuchdesign/next-use-contextual-routing" }
+    {
+      "repo": "toomuchdesign/next-use-contextual-routing",
+      "disableThanks": true
+    }
   ],
   "commit": false,
   "fixed": [],
